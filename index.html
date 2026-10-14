@@ -376,7 +376,8 @@ svg { display: block; max-width: 100%; }
 /* ==========================================================
    6. Hero
    ========================================================== */
-.hero { padding-block: clamp(2rem, 1rem + 5vw, 5rem) var(--section-pad); }
+/* Главный экран ниже: меньше отступ снизу (лабораторная №5) */
+.hero { padding-block: clamp(2rem, 1rem + 4vw, 4rem) clamp(1rem, 0.5rem + 1.5vw, 1.5rem); }
 .hero__inner {
   display: grid;
   gap: 2rem;
@@ -438,7 +439,7 @@ svg { display: block; max-width: 100%; }
 }
 @media (min-width: 56em) {
   .hero__inner { grid-template-columns: 1.05fr 0.95fr; gap: 3rem; }
-  .hero__art { max-width: 34rem; }
+  .hero__art { max-width: 28rem; }
 }
 
 /* ==========================================================
@@ -1057,7 +1058,7 @@ a.contacts__value {
         <p class="eyebrow">Бенто-торты на заказ · Москва</p>
         <h1 class="hero__title" id="hero-title">Маленький торт для <em>большого повода</em></h1>
         <p class="hero__text">
-          Собираем бенто-торты вручную: 350–500 г, с вашей надписью или рисунком,
+          Собираем бенто-торты вручную: <span style="white-space: nowrap">350–500&nbsp;г</span>, с вашей надписью или рисунком,
           в крафтовой коробочке с ложкой и свечкой. Хватит на двоих — или на одного,
           если очень хочется.
         </p>
