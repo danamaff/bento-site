@@ -556,6 +556,25 @@ svg { display: block; max-width: 100%; }
   height: auto;
   transition: transform 0.45s var(--ease);
 }
+/* Фото тортов в карточках каталога (лабораторная №5) */
+.cake__pic--photo {
+  position: relative;
+  padding: 0;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+.cake__pic--photo img {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.45s var(--ease);
+}
+@media (hover: hover) {
+  .cake:hover .cake__pic--photo img { transform: scale(1.05); }
+}
 .cake__body {
   display: flex;
   flex-direction: column;
@@ -617,6 +636,7 @@ svg { display: block; max-width: 100%; }
     flex: 0 0 34%;
     padding: 0.6rem;
   }
+  .cake__pic--photo { padding: 0; aspect-ratio: auto; }
   .cake__body {
     min-width: 0;
     gap: 0.55rem;
@@ -1207,13 +1227,8 @@ a.contacts__value {
       <div class="catalog">
         <!-- Торт 1 -->
         <article class="cake">
-          <div class="cake__pic">
-            <svg viewBox="0 0 200 200" aria-hidden="true" focusable="false" style="--cake:#F9D5DC; --cream:#FFF8F0">
-              <use href="#bento" width="200" height="200"/>
-              <text class="ink" x="100" y="95" text-anchor="middle" font-size="17" fill="#5A3E36">ты лучше</text>
-              <text class="ink" x="100" y="115" text-anchor="middle" font-size="17" fill="#5A3E36">всех</text>
-              <use href="#heart" x="92" y="121" width="16" height="14" fill="#5A3E36"/>
-            </svg>
+          <div class="cake__pic cake__pic--photo">
+            <img style="object-position: 45% 78%" src="img/nezhnost.jpg" alt="Бенто-торт «Нежность» в белой коробочке: на торте рисунок со сцепленными мизинцами и надпись «Love you»" width="800" height="1200" loading="lazy" decoding="async">
           </div>
           <div class="cake__body">
             <h3 class="cake__title">«Нежность»</h3>
@@ -1230,11 +1245,8 @@ a.contacts__value {
 
         <!-- Торт 2 -->
         <article class="cake">
-          <div class="cake__pic">
-            <svg viewBox="0 0 200 200" aria-hidden="true" focusable="false" style="--cake:#FFF8F0; --cream:#F4BCC8">
-              <use href="#bento" width="200" height="200"/>
-              <use href="#heart" x="70" y="75" width="60" height="52" fill="#EFA3B4"/>
-            </svg>
+          <div class="cake__pic cake__pic--photo">
+            <img style="object-position: 45% 66%" src="img/serdce.jpg" alt="Бенто-торт «Сердце» в открытой коробочке: белый крем, красные сердечки и надпись «happy birthday»" width="900" height="1200" loading="lazy" decoding="async">
           </div>
           <div class="cake__body">
             <h3 class="cake__title">«Сердце»</h3>
@@ -1281,13 +1293,8 @@ a.contacts__value {
 
         <!-- Торт 4 -->
         <article class="cake">
-          <div class="cake__pic">
-            <svg viewBox="0 0 200 200" aria-hidden="true" focusable="false" style="--cake:#FCE9ED; --cream:#EFA3B4">
-              <use href="#bento" width="200" height="200"/>
-              <use href="#flower" x="64" y="62" width="40" height="40"/>
-              <use href="#flower" x="100" y="80" width="34" height="34" style="--petal:#FBC9A0; --core:#FFF8F0"/>
-              <use href="#flower" x="72" y="104" width="30" height="30" style="--petal:#FFF8F0; --core:#F4AE78"/>
-            </svg>
+          <div class="cake__pic cake__pic--photo">
+            <img style="object-position: 40% 75%" src="img/cvetochnyj.jpg" alt="Бенто-торт «Цветочный» в открытой коробочке: белый торт с ярким красным цветком сверху" width="800" height="600" loading="lazy" decoding="async">
           </div>
           <div class="cake__body">
             <h3 class="cake__title">«Цветочный»</h3>
