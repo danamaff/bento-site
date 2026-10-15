@@ -1,0 +1,54 @@
+name: Проверка и публикация сайта
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  check:
+    name: Проверка HTML и ссылок
+    runs-on: ubuntu-latest
+    steps:
+      - name: Получение файлов репозитория
+        uses: actions/checkout@v7
+
+      - name: Проверка HTML-разметки (HTMLHint)
+        run: npx --yes htmlhint@1.9.2 "**/*.html"
+
+      - name: Проверка ссылок и изображений
+        run: python3 .github/scripts/check_links.py index.html
+
+  deploy:
+    name: Публикация на GitHub Pages
+    needs: check
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Получение файлов репозитория
+        uses: actions/checkout@v7
+
+      - name: Настройка Pages
+        uses: actions/configure-pages@v6
+
+      - name: Подготовка файлов сайта
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: '.'
+
+      - name: Публикация
+        id: deployment
+        uses: actions/deploy-pages@v5
